@@ -1,0 +1,54 @@
+console.log(upload[0].imagePath)
+    //   2d
+
+
+
+// 
+
+// const engineId = 'stable-diffusion-xl-beta-v2-2-2';
+// const apiHost =  'https://api.stability.ai';
+// // const apiKey = process.env.STABILITY_API_KEY;
+// // const apiKey = "sk-ZrK2fwIkX81k0J42un7Hnchxa91TP85dj1XHUpntlfkbxzPr";
+// const apiKey = "sk-3gXaI8vWnyebkRYah3sl9NhNc7GLrs8G9N1lk2DKVKOW5NQA";
+// // const apiKey = "3";
+
+//         if (!apiKey) throw new Error('Missing Stability API key.');
+//         const formData = new FormData();
+//                 formData.append('init_image', fs.readFileSync(`${upload[0].imagePath}`));
+//                 formData.append('init_image_mode', 'IMAGE_STRENGTH');
+//                 formData.append('image_strength', 0.85);
+//                 formData.append('text_prompts[0][text]', '2d');
+//                 formData.append('cfg_scale', 7);
+//                 formData.append('clip_guidance_preset', 'FAST_BLUE');
+//                 formData.append('style_preset', 'anime');
+//                 formData.append('samples', 1);
+//                 formData.append('steps', 30);
+//                 fetch(`${apiHost}/v1/generation/${engineId}/image-to-image`, {
+//                     method: 'POST',
+//                     headers: {
+//                       ...formData.getHeaders(),
+//                       Accept: 'application/json',
+//                       Authorization: `Bearer ${apiKey}`,
+//                     },
+//                     body: formData,
+//                   })
+//                   .then((response) => {
+//                       if (!response.ok) {
+//                         console.log(response.body)
+//                         console.log(response.statusText)
+//                         console.log(response.url)
+//                       throw new Error(`Non-200 response: ${response.status} - ${response.statusText}`);
+//                     }
+//                     return response.json();
+//                   })                  
+//                     .then((responseJSON) => {
+//                       responseJSON.artifacts.forEach((image, index) => {
+//                         fs.writeFileSync(`public/Results/${index}.png`, Buffer.from(image.base64, 'base64'));
+//                         alert("succesful request")
+//                       });
+//                     })
+//                     .catch((error) => {
+//                       console.error('Error:', error);
+//                     });
+                  
+    //2d

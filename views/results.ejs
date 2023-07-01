@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Before and After</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/results.css">
+</head>
+<body>
+    <div class="backDrop">
+        <div class="card">
+            <span onclick="closeBtn()">x</span>
+            <p>Click the image to download</p>
+        </div>
+    </div>
+    <header data-aos="fade-down">
+        <h1>Enhanzer</h1>
+        <p>Hi Ola</p>
+    </header>
+    <div class="compare">
+        <% for (const load of upload) { %>
+        <div class="beforeImg" data-aos="fade-left" class="skeleton">
+            <img src="<%= load.imagePath %>" alt="">
+            <p>Before</p>
+        </div>
+        <% } %> 
+        <div class="afterImg" data-aos="fade-right" class="skeleton"> 
+        <a href="<%= outputUrl %>" download> <img src="<%= outputUrl %>"/> </a>  
+            <p>After</p>
+     <h6><a href="/furtherEnhancement?outputUrl=<%= encodeURIComponent(outputUrl) %>">Edit</a></h6>
+
+         </div>
+    </div> 
+    <div class="btn">
+        <a href="/enhanzer"><button>Retry</button></a>
+    </div>
+</body>
+    <script>
+        const statusCard = document.querySelector(".card")
+        const backDrop = document.querySelector(".backDrop")
+        const afterImg = document.querySelector(".afterImg img")
+        function closeBtn() {
+            backDrop.style.display = "none"
+            statusCard.style.display = "none"
+        }
+        backDrop.addEventListener("click", () => {
+            backDrop.style.display = "none"
+            statusCard.style.display = "none"
+        })
+        // if (afterImg.src = "") {
+        //     afterImg.style.display = "none"
+        // }
+document.documentElement.style.setProperty('--bg', 'url(<%= outputUrl %>)')
+
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+      </script>
+</html>

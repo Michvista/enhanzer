@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo</title>
+    <link rel="stylesheet" href="/enhanzer.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d4bd732f50.js" crossorigin="anonymous"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <div class="toast">
+        <div class="toast-content">
+            <i class="fa-solid fa-check fa-beat"></i>
+            <div class="message">
+                <span class="textMsg text-1">Success</span>
+                <span class="textMsg text-2">Your image is being uploaded</span>
+            </div>
+        </div>
+        <i class="fa-solid fa-xmark close"></i>
+        <div class="progress"></div>
+    </div>
+    <header data-aos="fade-down">
+        <h1><a href="/"> Enhanzer</a></h1>
+        <p>Hi <%= inputData.name %></p>
+    </header>
+    <form method="POST" action="/getResults" enctype="multipart/form-data">
+    <div class="buttons" data-aos="fade-down">
+        <input type="file" class="files" required id="myNameFile" name="myFile"  accept=".png, .jpg, .jpeg">
+          <label  for="file" class="upload">
+              Upload an Image
+            </label>
+        <div class="wrap" data-aos="fade-down">
+            <p>Select a style</p>
+            <img src="/radio.png" alt="" class="radio">
+            <img src="/radioMobile.png" alt="" class="mobile">
+        </div>
+    </div>
+    <div class="styles" data-aos="fade-down">
+        <select value="None" name="selectedImage" id="seelectedImage">
+            <option value="None"></option>
+        </select>
+        <img src="/cartoon.png" alt="" class="cartoon">
+        <img src="/3d.png" alt="" class="3d">
+        <img src="/removeBg.png" alt="" class="removeBg">
+    </div>
+    <div class="button" data-aos="fade-down">
+        <!-- <a class="btn">a Tag</a> -->
+        <button class="btn">Submit</button>
+    </div>
+</form>
+    <div class="text">
+        <p><a href="">Upgrade to pro to view more styles</a></p>
+        <a href=""><img src="/arrow.png" alt=""></a>
+    </div>
+</body>
+</html>
+<script>
+const overlay = document.querySelector(".upload");
+const input = document.getElementById("myNameFile");
+const select = document.querySelector("select option")
+const form = document.querySelector("form")
+
+const button = document.querySelector(".btn")
+const toastElem = document.querySelector(".toast")
+const closeIcon = document.querySelector(".close")
+const progress = document.querySelector(".progress")
+
+overlay.addEventListener('click', () => {
+  input.click();
+})
+
+// button.addEventListener("click", () => {
+//         toastElem.classList.add("active")
+//         progress.classList.add("active")
+//         setTimeout(() => {
+//             toastElem.classList.remove("active")
+//         }, 15000)
+
+//         setTimeout(() => {
+//             progress.classList.remove("active")
+//         }, 15300)
+// })
+
+// closeIcon.addEventListener("click", () => {
+//         toastElem.classList.remove("active")
+//         setTimeout(() => {
+//             progress.classList.remove("active")
+//         }, 300)
+// })
+
+function handleSubmit(event) {
+    var fileInput = document.getElementById("myNameFile")
+    var file = fileInput.files[0]
+
+    if(!file) {
+        alert("Please select an image")
+        return false;
+    }
+
+    if (select.value === "None" || select.value === "") {
+        event.preventDefault();
+        toastElem.classList.remove("active")
+        progress.classList.remove("active")
+        alert("You must select an image!");
+    }
+
+    toastElem.classList.add("active")
+        progress.classList.add("active")
+        setTimeout(() => {
+            toastElem.classList.remove("active")
+        }, 15000)
+
+        setTimeout(() => {
+            progress.classList.remove("active")
+        }, 15300)
+
+closeIcon.addEventListener("click", () => {
+        toastElem.classList.remove("active")
+        setTimeout(() => {
+            progress.classList.remove("active")
+        }, 300)
+})
+    return true;
+}
+
+form.addEventListener("submit", handleSubmit);
+
+
+const images = document.querySelectorAll(".styles img");
+
+    images.forEach((img) => {
+    img.addEventListener("click", () => {
+        if (img.classList.contains("check")) {
+        img.classList.remove("check");
+        select.value = "None"
+        } else {
+        images.forEach((img) => {
+            img.classList.remove("check");
+        });
+        img.classList.add("check");
+        select.value= img.className.split(" check")[0]
+        }
+    });
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@runwayml/hosted-models@latest/dist/hosted-models.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+  </script>
+  <script>
+  </script>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Further Enhancement</title>
+    <link rel="stylesheet" href="/furtherEnhancement.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d4bd732f50.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <h1><a href="/">Enhanzer</a></h1>
+        <p>Hi <%= inputData.name %></p>
+    </header>
+    <div class="content">
+        <div class="image">
+            <div class="boxCont">
+                <div class="box"></div>
+                <img src="<%= outputUrl %>" alt="">
+            </div>
+            <div class="boxContMobile mobile">
+               <div class="boxMobile"></div> 
+               <img src="<%= outputUrl %>" alt="" class="mobile">
+            </div>
+        </div>
+        <div class="text">
+            <p>Choose an overlay Color:</p>
+            <div class="selectMenu">
+                <div class="selectBtn">
+                    <span class="sBtn-Text">Select a Color</span>
+                    <i class="fa-solid fa-caret-down"></i>
+                </div>
+                <ul class="options">
+                    <li class="option">
+                        <i class="fa-solid fa-square" style="color: var(--red)"></i>
+                        <span class="option-text">Red</span>
+                    </li>
+                    <li class="option">
+                        <i class="fa-solid fa-square" style="color: var(--blue)"></i>
+                        <span class="option-text">Blue</span>
+                    </li>
+                    <li class="option">
+                        <i class="fa-solid fa-square" style="color: var(--blueGray);"></i>
+                        <span class="option-text">Blue Gray</span>
+                    </li>
+                    <li class="option">
+                        <i class="fa-solid fa-square"  style="color: var(--orange);"></i>
+                        <span class="option-text">Orange</span>
+                    </li>
+                    <li class="option">
+                        <i class="fa-solid fa-square" style="color: var(--gold);"></i>
+                        <span class="option-text">Gold</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+    <script>
+        const optionMenu = document.querySelector(".selectMenu")
+        const selectBtn = optionMenu.querySelector(".selectBtn")
+        const options = optionMenu.querySelectorAll(".option")
+        const sBtnText = optionMenu.querySelector(".sBtn-Text")
+
+        const boxCont = document.querySelector(".content .image .boxCont");
+        const box = document.querySelector(".content .image .boxCont .box");
+        const boxContImg = document.querySelector(".boxCont img");
+
+        const boxMobile = document.querySelector(".content .image .boxMobile");
+
+    selectBtn.addEventListener("click", ()=> {
+        optionMenu.classList.toggle("active")
+    })
+        options.forEach(option => {
+            option.addEventListener("click", () => {
+                let selectedOption = option.querySelector(".option-text").innerText;
+                sBtnText.innerText = selectedOption
+
+                let selectedColor = option.querySelector("i").style.color
+                box.style.backgroundColor = selectedColor
+                boxMobile.style.backgroundColor = selectedColor
+
+                optionMenu.classList.remove("active")
+            })
+        })
+
+        window.addEventListener("load", () => {
+
+            boxCont.style.width = boxContImg.clientWidth + "px";
+            boxCont.style.height = boxContImg.clientHeight + "px";
+
+            console.log(boxContImg.clientHeight)
+            console.log(boxCont.style.height)
+        });
+    </script>
+</html>

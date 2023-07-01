@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+-webkit-user-select: none; /* Safari */
+-ms-user-select: none; /* IE 10 and IE 11 */
+user-select: none; /* Standard syntax */
+font-family: 'Montserrat', sans-serif;
+color: #fff;
+}
+:root{
+	--mainBg: #141518;
+    --card: #777;
+    --darkerColor: #555;
+    --green: #0dff00;
+    --sideBar: #242730;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    background: var(--mainBg);
+    width: 100%;
+    height: 100vh;
+}
+.backDrop{
+  position: fixed;
+  background:#55555595;
+  width: 100%;
+  height: 100vh;
+  backdrop-filter: blur(3px);
+  z-index: 3000;
+}
+.card{
+  background: var(--darkerColor);
+  width: 300px;
+  padding: 3rem;
+  height: 300px;
+  font-size: 35px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  z-index: 5000;
+  
+}
+.card span{
+  float: right;
+  font-weight: 600;
+  color: red;
+  cursor: pointer;
+}
+.card p{
+  padding-top: 30px;
+  width: 200px;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    padding: 3rem;
+}
+header h1{
+    font-weight: 400;
+    font-size: 50px;
+}
+header p{
+    font-size: 25px;
+}
+input[type="file"] {
+    display: none;
+}
+.buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    height: 20vh;
+    margin-bottom: 20px;
+}
+.upload{
+    width:517px;
+    height: 120px;
+    margin:20px;
+    background:var(--card);
+    border: none;
+    border-radius: 5px;
+    transition: .3s ease-out;
+    color:white;
+    cursor:pointer;
+    text-align: center;
+    font-size: 40px;
+    align-items: center;
+    padding-top: 30px;
+  }
+  .upload:hover{
+    cursor:pointer;
+    scale: 1.1;
+    background:var(--darkerColor);
+    color: var(--mainBg);
+    border: 1px solid var(--mainBg);
+  }
+  .compare{
+    display: flex;
+    justify-content: center;
+  }
+  .beforeImg,
+  .afterImg{
+    width: 75%;
+    height: 75%;
+  }
+  img{
+    width: 75%;
+    height: 75%;
+    cursor: pointer;
+  }
+ .afterImg .afterImage{
+     background-image: var(--bg);
+     width: 500px;
+     height: 500px;
+   }
+  .beforeImg{
+    margin-left: 10rem;
+    margin-right: 10rem;
+  }
+  .beforeImg p,
+  .afterImg p{
+    padding: 10px;
+    font-size: 30px;
+    margin: 2rem;
+  }
+  .afterImg{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  .afterImg h6{
+    font-size: 30px;
+    position: absolute;
+    font-weight: 400;
+    align-self: center;
+    text-align: center;
+    top: -2.5rem;
+    color:#fff;
+    cursor: pointer;
+  }
+  .afterImg h6 a{
+    text-decoration: none;
+  }
+  button{
+    width:300px;
+    height: 75px;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background: var(--card);
+    color: #fff;
+    margin: 15px;
+    font-size: 22px;
+    border-radius: 7px;
+    transition: .3s ease-in-out;
+  }
+  button:hover{
+    cursor:pointer;
+    scale: 1.1;
+    background:var(--darkerColor);
+    color: var(--mainBg);
+    border: 1px solid var(--mainBg);
+  }
+  .btn{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+  }
+  /* skeleton */
+  .skeleton{
+    animation: animate 2s linear infinite alternate;
+  }
+  @keyframes animate {
+    0%{
+      background-color: hsl(200, 20%, 70%);
+    }
+    100%{
+      background-color: hsl(200, 20%, 95%);
+    }
+  }
+
+
+  @media screen and (max-width:960px) {
+    .compare{
+      align-items: center; 
+      flex-direction: column;
+    }
+    .beforeImg{
+      margin-right: 0rem;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    header h1{
+      font-size: 30px;
+    }
+    header p{
+      align-self: center;
+    }
+  .upload{
+      width: 299px;
+      height: 76px;
+      font-size: 20px;
+    }
+    .beforeImg{
+      margin-bottom: 3rem;
+    }
+}
+@media screen and (max-width: 400px) {
+  .upload{
+    width: 230px;
+    padding: 15px;
+  }
+  .compare{
+    justify-content: center;
+    align-items: center;
+    margin-left: 3rem;
+  }
+  .beforeImg{
+    margin-bottom: 6rem;
+  }
+  .afterImg img,
+  .beforeImg img{
+    width: 80%;
+    height: 80%;
+  }
+  .afterImg p,
+  .beforeImg p{
+    display: none;
+  }
+  .afterImg h6{
+    font-size: 18px;
+  }
+  .afterImg h6{
+    right: 5rem;
+  }
+  .beforeImg{
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
+}
+@media screen and (max-width: 400px) and (max-height: 900px) {
+  .upload{
+    padding: 25px;
+  }
+}

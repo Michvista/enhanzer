@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="/logIn.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="logInForm">
+            <form method="POST" action="/signUp">
+                <h1>Sign Up</h1>
+                <% if (inputData.hasError) {%>
+                    <p id="input-error"><%= inputData.message %></p>
+                <% } %>
+                <input type="text" name="name" placeholder="Name" value="<%= inputData.name %>" required>
+                <input type="email" name="email" placeholder="Email" value="<%= inputData.email %>" required>
+                <input type="password" name="password" placeholder="Password" value="<%= inputData.password %>" required>                
+                <button>Sign Up</button>
+                <p>or</p>
+            </form>
+            <button><img src="/Google - Original.png" alt=""> <p>Sign Up with Google </p></button>
+            <p>Don’t have an account?  <a href="/signIn">Log in</a></p>
+        </div>
+        <div class="image" data-aos="fade-left">
+            <p><a href="/">Enhanzer</a></p>
+            <div class="box">
+            </div>
+            <img src="/kid.png" alt="" class="desk">
+            <img src="/kidMobile.png" alt="" class="mobile">
+        </div>
+    </div>
+</body>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+  </script>
+</html>
