@@ -39,7 +39,7 @@ const __filename = fileURLToPath(import.meta.url)
 const app = express();
 const MongoDBStore = mongodbStore(session)
 const sessionStore = new MongoDBStore({
-    uri: 'mongodb://127.0.0.1:27017/',
+    uri: 'mongodb+srv://olumidemichelle:michvic09@enhanzer.wzxaxfo.mongodb.net/',
     databaseName: "enhanzer",
     collection: 'sessions'
 });
